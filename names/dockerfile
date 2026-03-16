@@ -1,0 +1,6 @@
+FROM corba-final:latest
+RUN mkdir -p /var/omninames
+# Exponemos el puerto del naming
+EXPOSE 5000
+# Comando para arrancar el naming service automáticamente
+CMD ["/usr/bin/omniNames", "-start", "5000", "-always"]

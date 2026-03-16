@@ -1,0 +1,6 @@
+FROM corba-final:latest
+WORKDIR /app
+COPY . .
+RUN omniidl -bpython Echo.idl
+# El cliente no necesita CMD porque lo correremos a mano o con un sleep
+CMD ["sleep", "infinity"]

@@ -1,0 +1,8 @@
+FROM corba-final:latest
+WORKDIR /app
+COPY . .
+RUN omniidl -bpython Echo.idl
+# Esto asegura que los paquetes existan siempre
+RUN touch _GlobalIDL/__init__.py _GlobalIDL__POA/__init__.py
+# Comando con la dirección del naming service incluida
+CMD ["python3", "server_nm.py", "-ORBInitRef", "NameService=corbaloc::el-naming:5000/NameService"]
